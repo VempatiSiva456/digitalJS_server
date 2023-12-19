@@ -1,0 +1,94 @@
+@import "~bootstrap/scss/bootstrap";
+@import "./global-vars.scss";
+
+@import "./split-gutters.module.scss";
+@import "./toolbar.module.scss";
+@import "./monitorbox.module.scss";
+@import "./editor.module.scss";
+@import "./tab-buttons.module.scss";
+
+body {
+    height: 100vh;
+}
+
+.main-wrapper-grid {
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    height: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: 1fr 10px 0;
+    overflow: hidden;
+
+    &.monitor-open {
+        grid-template-rows: 4.5fr 10px 1fr;
+    }
+}
+
+.editor-circuit-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 10px 1fr;
+    overflow-y: auto;
+}
+
+.tab-wrapper {
+    overflow: auto;
+}
+
+#paper {
+    height: 100%;
+
+    > div {
+        min-width: 100%;
+    }
+}
+
+.popover {
+    max-width: 600px !important;
+}
+
+div.tab-content form {
+    margin-bottom: 1em;
+}
+
+.CodeMirror {
+    height: auto !important;
+}
+
+.symbola {
+    font-family: "Symbola", $font-family-sans-serif;
+}
+
+.zoom-buttons-wrapper {
+    position: absolute;
+    right: 0;
+    margin: 1.5rem;
+    z-index: 1;
+}
+
+
+@media (max-width: $mobile-ui-max-width) {
+    .main-wrapper-grid {
+        grid-template-rows: min-content 1fr 0;
+        height: calc(100vh - 3.8rem);
+    }
+
+    .gutter-horizontal {
+        display: none;
+    }
+
+    .editor-circuit-wrapper {
+        display: block;
+        overflow-y: auto;
+    }
+
+    .tab-wrapper {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+}
